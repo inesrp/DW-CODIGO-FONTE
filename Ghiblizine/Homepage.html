@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible'>
+  <title>Ghiblizine</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='sass/main.css'>
+
+  <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+
+</head>
+
+<body id="home">
+  <header class="gridMain">
+    <p>Ghiblizine</p>
+    <img alt="Studio Ghibli logo" src="assets/imgs/Logo.png" width="20%" height="auto" class="mH">
+    <p class="mH">a</p>
+    <p class="mH">magazine</p>
+
+    <button onclick="myFunction()" class="menu">
+      <div class="menu">
+        <span class="mHi"></span>
+        <span class="mHi"></span>
+        <span class="mHi"></span>
+      </div>
+    </button>
+
+    <nav class="mH">
+      <ul>
+        <li><a href="movies.html">MOVIES</a></li>
+        <li><a href="characters.html">CHARACTERS</a></li>
+        <li><a href="news.html">NEWS</a></li>
+        <li><a href="aboutUs.html">ABOUT US</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <div class="wrapper">
+    <main>
+      <div id="container">
+
+      </div>
+
+      <div class="HorBar">
+        <span class="HBcontent"> BREAKING NEWS: Hayao Miyazaki Prepares to Cast One Last Spell, new moving is on the
+          works</span>
+      </div>
+
+      <h1>NEWS</h1>
+
+      <div class="slider">
+
+        <div class="thumbnailSlide fade">
+          <img src="assets/imgs/thumb.png" width="100%" height="auto">
+          <div class="cap">Title 1</div>
+        </div>
+
+        <div class="thumbnailSlide fade">
+          <img src="assets/imgs/thumb.png" width="100%" height="auto">
+          <div class="cap">Title 2</div>
+        </div>
+
+        <div class="thumbnailSlide fade">
+          <img src="assets/imgs/thumb.png" width="100%" height="auto">
+          <div class="cap">Title 3</div>
+        </div>
+
+        <img class="prev" src="assets/imgs/ArrowL.png" onclick="nxt(-1)">
+        <img class="next" src="assets/imgs/ArrowR.png" onclick="nxt(1)">
+
+        <div style="text-align:center; position: relative; bottom:15%;">
+          <img class="waiting" onclick="current(1)" width="5%" height="auto">
+          <img class="waiting" onclick="current(2)" width="5%" height="auto">
+          <img class="waiting" onclick="current(3)" width="5%" height="auto">
+        </div>
+      </div>
+
+      <div id="newsContainer">
+
+        <h1> SEE MORE NEWS <span>+ </span> </h1>
+        <img alt="Calcifer" id="cal" src="assets/imgs/Cal.png" width="60%" height="auto">
+      </div>
+
+      <img id="dust" alt="totoro dust" src="assets/imgs/dust.png" width="20%" height="auto">
+
+    </main>
+
+
+    <footer>
+      <img class="imgfooter" src="assets/imgs/dust.png">
+      <a href="ghiblicollection.com">
+        <img alt="instagram" src="assets/imgs/world-wide-web.png" width="10%" height="auto">
+        ghiblicollection.com
+
+      </a>
+
+      <a href="instagram.com/ghibliuk">
+        <img alt="instagram" src="assets/imgs/instagram.png" width="10%" height="auto">
+        instagram.com/ghibliuk
+      </a>
+    </footer>
+  </div>
+
+  <script src="js/homepage.js"></script>
+  <script src="js/carousel.js"></script>
+  <script>
+    function myFunction() {
+      document.querySelector("nav.mH").classList.toggle("mostra");
+    }
+
+
+    window.onclick = function (event) {
+      if (!event.target.matches('.menu')) {
+        var menu = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

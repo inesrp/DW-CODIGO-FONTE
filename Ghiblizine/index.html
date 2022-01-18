@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Loading...</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <link rel="stylesheet" href="sass/main.css">
+  <link rel="stylesheet" href="sass/aframestyle.css"> <!-- stylesheet para os modelos 3D funcionarem-->
+
+</head>
+
+<body id="Load">
+  <div id="3dscene">
+    <script>
+      //permitir alterar opacidade
+      //adicionar costum componente 
+      AFRAME.registerComponent('model-opacity', {
+        schema: { default: 1.0 },
+        init: function () {
+          //garantir que o modelo tá loaded
+          this.el.addEventListener("model-loaded", () => {
+            const object3DEl = this.el.object3DMap;
+            var mesh = this.el.getObject3D('mesh');
+
+            var data = this.data;
+            if (!mesh) { return; }
+            mesh.traverse(function (node) {
+              if (node.isMesh) {
+                node.material.opacity = data;
+                node.material.transparent = data < 1.0;
+                node.material.needsUpdate = true;
+              }
+            });
+          }, 2000)
+        },
+        update: function () {
+          var mesh = this.el.getObject3D('mesh');
+          var data = this.data;
+          if (!mesh) { return; }
+          mesh.traverse(function (node) {
+            if (node.isMesh) {
+              node.material.opacity = data;
+              node.material.transparent = data < 1.0;
+              node.material.needsUpdate = true;
+            }
+          });
+        }
+      });
+      // reference https://stackoverflow.com/questions/52422532/a-frame-gltf-2-0-cant-set-opacity
+
+
+    </script>
+
+    <a-scene embedded vr-mode-ui="enabled:false">
+      <!-- assets modelos 3D -->
+      <!--    <a-asset-item id="totoros" src="https://raw.githubusercontent.com/inesrp/DW-Models/main/totoro/scene.gltf">
+      </a-asset-item> -->
+
+      <a-asset-item id="noface" src="https://raw.githubusercontent.com/inesrp/DW-Models/main/noface1446812/scene.gltf">
+      </a-asset-item>
+
+      <a-asset-item id="coin" src="https://raw.githubusercontent.com/inesrp/DW-Models/main/russian_old_coin/scene.gltf">
+      </a-asset-item>
+
+
+      <!-- Animação de Modelos -->
+      <!--<a-gltf-model color="yellow" class="coinflip" model-opacity="0.1" position="0 0 -10" scale="0.04 0.04 0.04"
+        rotation="0 0 0" src="#coin"></a-gltf-model>
+             <a-gltf-model color="black" position="0 0 -10" scale="4 4 4" rotation="0 -90 0" src="#noface"></a-gltf-model>
+
+      -->
+
+      <a-light id="ambientLight" type="ambient" color="yellow"> </a-light>
+      <a-light id="directionalLight" type="directional" color="#f0b616" intensity="10" position="0 10 10"></a-light>
+
+      <a-camera wasd-controls-enabled="false">
+      </a-camera>
+    </a-scene>
+
+    <a-scene embedded vr-mode-ui="enabled:false">
+      <a-asset-item id="noface" src="https://raw.githubusercontent.com/inesrp/DW-Models/main/noface1446812/scene.gltf">
+      </a-asset-item>
+      <a-gltf-model position="0 0 -13" scale="4 4 4" rotation="0 -90 0" src="#noface"></a-gltf-model>
+      <a-light id="ambientLight" type="ambient" color="white"> </a-light>
+    </a-scene>
+  </div>
+
+  <div class="LoadingSection ">
+    <span id="Loading">Loading...</span>
+    <div>
+      <span>GHIBLIZINE</span>
+      <span id="loadbar"></span>
+      <span>A Studio Ghibli magazine</span>
+    </div>
+  </div>
+
+
+  <script src="js/animacoesv2.js">
+  </script>
+</body>
+
+</html>
